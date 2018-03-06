@@ -5,6 +5,7 @@
   "keywords": [
     "ember-addon"
   ],
+  "repository": "git@github.com/bruckwubete/echarts-ember.git",
   "license": "MIT",
   "author": "",
   "directories": {
