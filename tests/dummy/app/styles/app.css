@@ -1,0 +1,22 @@
+.aqi-chart {
+  height: 400px;
+  width: 100%;
+}
+
+.bar-chart-1 {
+  height: 400px;
+  width: 100%;
+}
+
+.demo-body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+  height: 360%;
+}
+
+.demo-full {
+  height: 100%;
+  width: 100%;
+}

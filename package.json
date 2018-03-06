@@ -18,7 +18,13 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.3.0"
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^2.0.0",
+    "echarts": "4.0.4",
+    "ember-computed-decorators": "0.3.0",
+    "ember-cli-babel": "^6.3.0",
+    "ember-cli-htmlbars": "^1.1.1",
+    "ember-prop-types": "^6.0.1"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
