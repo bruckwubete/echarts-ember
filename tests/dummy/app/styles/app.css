@@ -14,9 +14,15 @@
   position: relative;
   padding: 10px;
   height: 360%;
+  align-items: center;
 }
 
 .demo-full {
   height: 100%;
   width: 100%;
+}
+
+.demo-row {
+  width: 50%;
+  margin-bottom: 5%;
 }
