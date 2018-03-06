@@ -22,8 +22,8 @@ This README outlines the details of collaborating on this Ember addon.
 ![alt text][image_1]
 ![alt text][image_2]
 
-[image_1]: /docs/images/echarts-ember-1.png
-[image_2]: /docs/images/echarts-ember-2.png
+[image_1]: https://github.com/bruckwubete/echarts-ember/blob/master/docs/images/echarts-ember-1.png
+[image_2]: https://github.com/bruckwubete/echarts-ember/blob/master/docs/images/echarts-ember-2.png
 
 ## Running Tests
 
