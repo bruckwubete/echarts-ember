@@ -9,7 +9,7 @@ export default Component.extend({
 
   // == Keyword Properties ====================================================
 
-  attributeBindings: ['style'],
+  classNameBindings: ['echart'],
   layout,
 
   // == PropTypes =============================================================
@@ -26,8 +26,11 @@ export default Component.extend({
   },
 
   getDefaultProps () {
+    if (!this.class) {
+      this.echart = true
+    }
     return {
-      class: this.get('class') || 'ember-echart'
+      class: this.class || 'echart'
     }
   },
 
