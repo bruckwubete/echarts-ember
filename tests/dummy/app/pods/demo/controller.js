@@ -3,6 +3,14 @@ const {Controller, computed} = Ember
 
 export default Controller.extend({
 
+  init() {
+    this.set('data', genData(50))
+
+    setInterval(() => {
+      this.set('data', genData(50))
+    }, 5000)
+  },
+
   // == Computed Properties ===================================================
 
 
@@ -126,8 +134,8 @@ export default Controller.extend({
     }
   }).readOnly(),
 
-  option4: computed('', function () {
-    let data = genData(50)
+  option4: computed('data', function () {
+    const data = this.get('data')
 
     return {
       title: {

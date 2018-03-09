@@ -1,6 +1,6 @@
 import echarts from 'echarts'
 import Ember from 'ember'
-const {Component, run} = Ember
+const {Component, observer, run} = Ember
 import layout from '../templates/components/ember-echart'
 import {PropTypes} from 'ember-prop-types'
 
@@ -25,6 +25,13 @@ export default Component.extend({
     // state
   },
 
+  optionChanged: observer('option', 'myChart', function() {
+    const myChart = this.get('myChart')
+    if (myChart) {
+      this.get('myChart').setOption(this.get('option'));
+    }
+  }),
+
   getDefaultProps () {
     if (!this.class) {
       this.echart = true
@@ -37,7 +44,9 @@ export default Component.extend({
   init () {
     this._super(...arguments)
     run.schedule('afterRender', this, function () {
-      echarts.init(document.getElementById(this.get('id'))).setOption(this.get('option'))
+      const myChart = echarts.init(document.getElementById(this.get('id')))
+      myChart.setOption(this.get('option'))
+      this.set('myChart', myChart)
     })
   }
 })
