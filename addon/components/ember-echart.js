@@ -25,10 +25,10 @@ export default Component.extend({
     // state
   },
 
-  optionChanged: observer('option', 'myChart', function() {
+  seriesChanged: observer('option.series', 'myChart', function() {
     const myChart = this.get('myChart')
     if (myChart) {
-      this.get('myChart').setOption(this.get('option'));
+      this.get('myChart').setOption({series: this.get('option.series')})
     }
   }),
 
