@@ -5,9 +5,15 @@ export default Controller.extend({
 
   init() {
     this.set('data', genData(50))
+    this.set('data2', Array.from({length: 12}, () => Math.floor(Math.random() * 17)))
+    this.set('data3', Array.from({length: 12}, () => Math.floor(Math.random() * 17)))
+    this.set('data4', Array.from({length: 12}, () => Math.floor(Math.random() * 17)))
 
     setInterval(() => {
       this.set('data', genData(50))
+      this.set('data2', Array.from({length: 12}, () => Math.floor(Math.random() * 17)))
+      this.set('data3', Array.from({length: 12}, () => Math.floor(Math.random() * 17)))
+      this.set('data4', Array.from({length: 12}, () => Math.floor(Math.random() * 17)))
     }, 5000)
   },
 
@@ -57,7 +63,11 @@ export default Controller.extend({
     }
   }).readOnly(),
 
-  option3: computed('', function () {
+  option3: computed('data2', 'data3', 'data4', function () {
+    let data2 = this.get('data2')
+    let data3 = this.get('data3')
+    let data4 = this.get('data4')
+
     return {
       title: {
         text: 'Temp-humidity Bar chart'
@@ -117,18 +127,18 @@ export default Controller.extend({
         {
           name: 'average',
           type: 'bar',
-          data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+          data: data2
         },
         {
           name: 'volume',
           type: 'bar',
-          data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+          data: data3
         },
         {
           name: 'temperature',
           type: 'line',
           yAxisIndex: 1,
-          data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+          data: data4
         }
       ]
     }

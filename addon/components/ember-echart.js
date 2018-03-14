@@ -25,11 +25,16 @@ export default Component.extend({
     // state
   },
 
+  xAxisChanged: observer('option.xAxis', 'myChart', function() {
+    updateData(this.get('myChart'), 'xAxis', this.get('option.xAxis'))
+  }),
+
+  yAxisChanged: observer('option.yAxis', 'myChart', function() {
+    updateData(this.get('myChart'), 'yAxis', this.get('option.yAxis'))
+  }),
+
   seriesChanged: observer('option.series', 'myChart', function() {
-    const myChart = this.get('myChart')
-    if (myChart) {
-      this.get('myChart').setOption({series: this.get('option.series')})
-    }
+    updateData(this.get('myChart'), 'series', this.get('option.series'))
   }),
 
   getDefaultProps () {
@@ -50,3 +55,27 @@ export default Component.extend({
     })
   }
 })
+
+function updateData (chart, name, someOption) {
+  if (chart) {
+    let partialOption = {}
+    if (someOption instanceof Array) {
+      let itemsData = []
+      someOption.forEach((item) => {
+        if(item.data) {
+          itemsData.push({data: item.data})
+        } else {
+          itemsData.push({})
+        }
+      })
+      partialOption[name] = itemsData
+    } else if (someOption instanceof Object) {
+      if(someOption.data) {
+        partialOption[name] = [{data: someOption.data}]
+      } else {
+        return
+      }
+    }
+    chart.setOption(partialOption)
+  }
+}
