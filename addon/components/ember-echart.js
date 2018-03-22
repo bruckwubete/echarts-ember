@@ -21,7 +21,8 @@ export default Component.extend({
 
     // Optional
 
-    class: PropTypes.string
+    class: PropTypes.string,
+    actionPayload: PropTypes.object
     // state
   },
 
@@ -36,6 +37,16 @@ export default Component.extend({
   seriesChanged: observer('option.series', 'myChart', function() {
     updateData(this.get('myChart'), 'series', this.get('option.series'))
   }),
+
+  // optionsChanged: observer('option', 'myChart', function() {
+  //   this.get('myChart').setOption(this.get('option'))
+  // }),
+
+  triggerAction: observer('actionPayload', 'myChart', function() {
+      this.get('myChart').dispatchAction(this.get('actionPaylod'))
+  }),
+
+
 
   getDefaultProps () {
     if (!this.class) {

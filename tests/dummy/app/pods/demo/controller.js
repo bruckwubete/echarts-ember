@@ -177,7 +177,13 @@ export default Controller.extend({
         }
       ]
     }
-  }).readOnly()
+  }).readOnly(),
+
+  actions: {
+    sendAction() {
+      this.set('ActionPayload', {})
+    }
+  }
 })
 
 function genData () {
