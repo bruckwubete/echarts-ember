@@ -43,7 +43,7 @@ export default Component.extend({
   // }),
 
   triggerAction: observer('actionPayload', 'myChart', function() {
-    if (this.get('actionPaylod') instanceof Object) {
+    if (this.get('actionPayload') instanceof Object) {
       this.get('myChart').dispatchAction(this.get('actionPaylod'))
     }
   }),
