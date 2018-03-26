@@ -1,6 +1,7 @@
 import echarts from 'echarts'
 import Ember from 'ember'
-const {Component, observer, run} = Ember
+const {$, Component, observer,
+  run} = Ember
 import layout from '../templates/components/ember-echart'
 import {PropTypes} from 'ember-prop-types'
 
@@ -64,6 +65,11 @@ export default Component.extend({
     run.schedule('afterRender', this, function () {
       const myChart = echarts.init(document.getElementById(this.get('id')))
       myChart.setOption(this.get('option'))
+      $(window).on('resize', function() {
+        if (myChart) {
+          myChart.resize()
+        }
+      });
       this.set('myChart', myChart)
     })
   }
